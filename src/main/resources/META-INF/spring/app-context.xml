@@ -12,46 +12,26 @@
     <context:component-scan base-package="levelup.print" />-->
 
     <!--init-method="init" destroy-method="destroy"-->
-    <bean id="printer1" class="levelup.print.Printer" init-method="init" destroy-method="destroy"
-          p:name="Canon"
-          p:ip="192.168.1.100"
-          p:description="1st floor"/>
-
-    <bean id="printer2" class="levelup.print.Printer" init-method="init" destroy-method="destroy"
-          p:name="HP"
-          p:ip="192.168.1.103"
-          p:description="Director's office"/>
-
-    <bean id="printer3" class="levelup.print.Printer" init-method="init" destroy-method="destroy"
-          p:name="Epson"
-          p:ip="192.168.1.112"
-          p:description="Accounting department"/>
-
-<!--    <bean id="sourceMap" class="org.springframework.beans.factory.config.MapFactoryBean">
-    <property name="printersmap">
-        <map>
-            <entry key="1" value-ref="printer1"/>
-            <entry key="2" value-ref="printer2"/>
-            <entry key="3" value-ref="printer3"/>
-        </map>
-    </property>
-</bean>-->
-
-    <bean id="print" class="levelup.print.Print">
-        <!--<property name="printer" value="null"/>-->
-        <property name="printersmap">
-            <map>
-                <entry key="1" value-ref="printer1"/>
-                <entry key="2" value-ref="printer2"/>
-                <entry key="3" value-ref="printer3"/>
-            </map>
-        </property>
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+          <property name="customEditors">
+              <map>
+                  <entry key="levelup.Date">
+                      <bean id="dateEditor" class="levelup.DateEditor"/>
+                  </entry>
+              </map>
+          </property>
     </bean>
 
-<!--    <util:map id="printersmap" map-class="java.util.HashMap">
-        <entry key="1" value-ref="printer1"/>
-        <entry key="2" value-ref="printer2"/>
-        <entry key="3" value-ref="printer3"/>
-    </util:map>-->
+    <bean id="user" class="levelup.User">
+        <property name="birthday" value="01-01-1970"/>
+        <property name="name" value="James"/>
+        <property name="surname" value="Bond"/>
+    </bean>
+
+<!--    <bean id="birthday" class="levelup.Date">
+        <property name="year"/>
+        <property name="month"/>
+        <property name="day"/>
+    </bean>-->
 
 </beans>

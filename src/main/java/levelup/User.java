@@ -3,7 +3,7 @@ package levelup;
 public class User {
     private String name;
     private String surname;
-    private String birthday;
+    private Date birthday;
 
     public String getName() {
         return name;
@@ -21,11 +21,11 @@ public class User {
         this.surname = surname;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 }
