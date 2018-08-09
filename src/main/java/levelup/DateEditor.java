@@ -8,10 +8,9 @@ public class DateEditor extends PropertyEditorSupport {
         String s = stripNonNumeric(text);
         String year, month, day;
         year = s.substring(4);
-        month = s.substring(2, 3);
-        day = s.substring(0, 1);
-        Date date = new Date(year, month, day);
-        setValue(date);
+        month = s.substring(2, 4);
+        day = s.substring(0, 2);
+        setValue(new Date(year, month, day));
     }
 
     private String stripNonNumeric(String original) {

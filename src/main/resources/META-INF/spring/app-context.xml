@@ -15,8 +15,8 @@
     <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
           <property name="customEditors">
               <map>
-                  <entry key="levelup.Date">
-                      <bean id="dateEditor" class="levelup.DateEditor"/>
+                  <entry key="levelup.Date" value="levelup.DateEditor">
+                      <!--<bean id="dateEditor" class="levelup.DateEditor"/>-->
                   </entry>
               </map>
           </property>
