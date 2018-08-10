@@ -6,13 +6,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!--mvc-->
 
-<!--    <context:annotation-config />
-    <context:component-scan base-package="levelup.print" />-->
-
-    <!--init-method="init" destroy-method="destroy"-->
-    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <bean name="editor" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
           <property name="customEditors">
               <map>
                   <entry key="levelup.Date" value="levelup.DateEditor">
@@ -23,15 +18,20 @@
     </bean>
 
     <bean id="user" class="levelup.User">
-        <property name="birthday" value="01-01-1970"/>
-        <property name="name" value="James"/>
-        <property name="surname" value="Bond"/>
+        <property name="birthday" value="${birthday}"/>
+        <property name="name" value="${name}"/>
+        <property name="surname" value="${surname}"/>
     </bean>
 
-<!--    <bean id="birthday" class="levelup.Date">
-        <property name="year"/>
-        <property name="month"/>
-        <property name="day"/>
-    </bean>-->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+<!--        <property name="location" value="User.properties" />-->
+        <property name="locations">
+            <list>
+                <value>User.properties</value>
+                <value>errors.properties</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>
