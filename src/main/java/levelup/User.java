@@ -1,9 +1,20 @@
 package levelup;
 
+import java.util.Locale;
+
 public class User {
     private String name;
     private String surname;
     private Date birthday;
+    private Locale locale;
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
 
     public String getName() {
         return name;
